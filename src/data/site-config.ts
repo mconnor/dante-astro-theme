@@ -1,43 +1,43 @@
-export type Image = {
+type ImageType = {
     src: string;
     alt?: string;
     caption?: string;
 };
 
-export type Link = {
+type LinkType = {
     text: string;
     href: string;
 };
 
-export type Hero = {
+type HeroType = {
     title?: string;
     text?: string;
-    image?: Image;
-    actions?: Link[];
+    image?: ImageType;
+    actions?: LinkType[];
 };
 
-export type Subscribe = {
+type SubscribeType = {
     title?: string;
     text?: string;
     formUrl: string;
 };
 
-export type SiteConfig = {
-    logo?: Image;
+type SiteConfigType = {
+    logo?: ImageType;
     title: string;
     subtitle?: string;
     description: string;
-    image?: Image;
-    headerNavLinks?: Link[];
-    footerNavLinks?: Link[];
-    socialLinks?: Link[];
-    hero?: Hero;
-    subscribe?: Subscribe;
+    image?: ImageType;
+    headerNavLinks?: LinkType[];
+    footerNavLinks?: LinkType[];
+    socialLinks?: LinkType[];
+    hero?: HeroType;
+    subscribe?: SubscribeType;
     postsPerPage?: number;
     projectsPerPage?: number;
 };
 
-const siteConfig: SiteConfig = {
+const siteConfig: SiteConfigType = {
     title: 'Dante',
     subtitle: 'Minimal Astro.js theme',
     description: 'Astro.js and Tailwind CSS theme for blog and portfolio by justgoodui.com',
