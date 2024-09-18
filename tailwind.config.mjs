@@ -1,6 +1,8 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+import defaultTheme from 'tailwindcss/defaultTheme';
+import twTypo from '@tailwindcss/typography';
 
-module.exports = {
+/** @type {import('tailwindcss').Config} */
+export default {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
     darkMode: 'class',
     theme: {
@@ -81,5 +83,5 @@ module.exports = {
             })
         }
     },
-    plugins: [require('@tailwindcss/typography')]
+    plugins: [twTypo]
 };
