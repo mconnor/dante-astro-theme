@@ -8,8 +8,8 @@ import eslintPluginAstro from 'eslint-plugin-astro';
 export default tseslint.config(
     js.configs.recommended,
     // ...tseslint.configs.recommended,
-    ...tseslint.configs.recommended,
-    // ...tseslint.configs.stylistic,
+    ...tseslint.configs.recommendedTypeChecked,
+    ...tseslint.configs.stylisticTypeChecked,
     // ...eslintPluginAstro.configs.recommended,
     {
         languageOptions: {
@@ -54,10 +54,10 @@ export default tseslint.config(
         }
     },
 
-    // {
-    //     files: ['**/*.js', '**/*.mjs'],
-    //     extends: [tseslint.configs.disableTypeChecked]
-    // },
+    {
+        files: ['**/*.js', '**/*.mjs'],
+        extends: [tseslint.configs.disableTypeChecked]
+    },
 
     {
         ignores: ['**/temp.js', 'dist/', '.prettierrc.mjs', '.astro']
