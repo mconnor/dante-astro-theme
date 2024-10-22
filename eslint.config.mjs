@@ -1,26 +1,25 @@
 // @ts-check
-// import astroEslintParser from 'astro-eslint-parser';
 import astroParser from 'astro-eslint-parser';
 import js from '@eslint/js';
 import tseslint from 'typescript-eslint';
 import globals from 'globals';
+import eslintPluginAstro from 'eslint-plugin-astro';
 
-const extraFileExtensions = ['.astro'];
-
-const astroConfig = tseslint.config(
+export default tseslint.config(
     js.configs.recommended,
+    // ...tseslint.configs.recommended,
     ...tseslint.configs.recommended,
-    // ...tseslint.configs.recommendedTypeChecked,
-    ...tseslint.configs.stylistic,
+    // ...tseslint.configs.stylistic,
+    // ...eslintPluginAstro.configs.recommended,
     {
         languageOptions: {
             parser: tseslint.parser,
             parserOptions: {
-                parserServices: true,
-                tsconfigRootDir: import.meta.dirname
-                // ecmaFeatures: {
-                //   jsx: true,
-                // },
+                projectService: true,
+                tsconfigRootDir: import.meta.dirname,
+                ecmaFeatures: {
+                    jsx: true
+                }
             },
             globals: {
                 ...globals.browser,
@@ -29,21 +28,23 @@ const astroConfig = tseslint.config(
         }
     },
     {
-        files: ['**/*.astro'],
+        files: ['*.astro'],
+        ...eslintPluginAstro.configs.recommended,
 
         languageOptions: {
             parser: astroParser,
             parserOptions: {
                 parser: tseslint.parser,
-                parserServices: true,
-                tsconfigRootDir: import.meta.dirname,
-                extraFileExtensions
+                ecmaFeatures: {
+                    jsx: true
+                }
             }
         }
     },
     {
         rules: {
-            '@typescript-eslint/consistent-type-definitions': 'off'
+            '@typescript-eslint/consistent-type-definitions': 'off',
+            '@typescript-eslint/triple-slash-reference': 'off'
         }
     },
 
@@ -53,13 +54,12 @@ const astroConfig = tseslint.config(
         }
     },
 
+    // {
+    //     files: ['**/*.js', '**/*.mjs'],
+    //     extends: [tseslint.configs.disableTypeChecked]
+    // },
+
     {
-        files: ['**/*.js'],
-        extends: [tseslint.configs.disableTypeChecked]
-    },
-    {
-        ignores: ['**/temp.js', 'dist/', '**/*.d.ts', '**/.*']
+        ignores: ['**/temp.js', 'dist/', '.prettierrc.mjs', '.astro']
     }
 );
-console.log('dirname ' + import.meta.dirname);
-export default astroConfig;
