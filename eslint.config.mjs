@@ -10,7 +10,7 @@ export default tseslint.config(
     // ...tseslint.configs.recommended,
     ...tseslint.configs.recommendedTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
-    // ...eslintPluginAstro.configs.recommended,
+
     {
         languageOptions: {
             parser: tseslint.parser,
@@ -28,9 +28,9 @@ export default tseslint.config(
         }
     },
     {
-        files: ['*.astro'],
-        ...eslintPluginAstro.configs.recommended,
-
+        files: ['**/*.astro'],
+        extends: [tseslint.configs.disableTypeChecked, ...eslintPluginAstro.configs.recommended],
+        // ...eslintPluginAstro.configs.recommended,
         languageOptions: {
             parser: astroParser,
             parserOptions: {
@@ -43,8 +43,9 @@ export default tseslint.config(
     },
     {
         rules: {
-            '@typescript-eslint/consistent-type-definitions': 'off',
+            '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
             '@typescript-eslint/triple-slash-reference': 'off'
+            // '@typescript-eslint/explicit-module-boundary-types': 'warn' // Added rule for explicit types
         }
     },
 
