@@ -4,7 +4,9 @@
     "strictNullChecks": true
   },
   "include": [
-    "src"
+    "src",
+    "*.config.mjs",
+    "jsx.d.ts"
   ],
   "exclude": [
     "node_modules",
@@ -12,6 +14,7 @@
     ".astro",
     ".turbo",
     "cache-directory",
-    "test/**/*"
+    "test/**/*",
+    ".prettierrc.mjs"
   ]
 }

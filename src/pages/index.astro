@@ -5,8 +5,8 @@ import Button from '#components/Button.astro';
 import Hero from '#components/Hero.astro';
 import PostPreview from '#components/PostPreview.astro';
 import ProjectPreview from '#components/ProjectPreview.astro';
-import siteConfig from '#data/site-config.js';
-import { sortItemsByDateDesc } from '#utils/data-utils.js';
+import siteConfig from '#data/site-config.ts';
+import { sortItemsByDateDesc } from '#utils/data-utils.ts';
 
 const posts = (await getCollection('blog')).sort(sortItemsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);

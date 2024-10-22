@@ -1,6 +1,6 @@
 type ImageType = {
     src: string;
-    alt?: string;
+    alt: string;
     caption?: string;
 };
 
